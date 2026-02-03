@@ -66,7 +66,8 @@ def draw_frame(frame, n):
     ax_sin.set_xlabel("t")
     ax_sin.set_ylabel("sin(2πnt)")
 
-    plt.tight_layout()
+    fig.subplots_adjust(wspace=0.35)
+
     return fig
 
 
