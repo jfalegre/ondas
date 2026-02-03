@@ -87,10 +87,11 @@ def draw_frame(frame, n):
 
 
 # ======================
-# Animación
+# Animación pongo N_FRAMES+1 porque no se incluye el fin en range(inicio, fin, paso)
+
 # ======================
 if animate:
-    for frame in range(0, N_FRAMES, frame_step):
+    for frame in range(0, N_FRAMES+1, frame_step):
         fig = draw_frame(frame, n)
         plot_container.pyplot(fig)
         plt.close(fig)
