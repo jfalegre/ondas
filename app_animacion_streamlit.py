@@ -21,6 +21,21 @@ col_controls, col_button = st.columns([3, 1])
 with col_controls:
     n = st.slider("Frecuencia n", min_value=1, max_value=10, value=1)
 
+velocidad = st.radio(
+    "Velocidad de la animación",
+    ["Lenta", "Normal", "Rápida"],
+    horizontal=True
+)
+if velocidad == "Lenta":
+    frame_step = 1
+elif velocidad == "Normal":
+    frame_step = 4
+else:  # Rápida
+    frame_step = 10
+
+
+
+
 with col_button:
     animate = st.button("Animar")
 
@@ -75,11 +90,12 @@ def draw_frame(frame, n):
 # Animación
 # ======================
 if animate:
-    for frame in range(N_FRAMES):
+    for frame in range(0, N_FRAMES, frame_step):
         fig = draw_frame(frame, n)
         plot_container.pyplot(fig)
         plt.close(fig)
-        time.sleep(0.03)
+        
+
 
 else:
     # Mostrar estado inicial
